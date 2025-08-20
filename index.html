@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étude Psychoacoustique</title>
+    <style>
+        :root {
+            --backgroud-color: #ebe8df;
+            --text-color: #2e2d2b;
+            --minor-point-color: #586c36;
+        }
+        body {
+            font: 20px Arial;
+            color: var(--text-color);
+            background-color: var(--backgroud-color);
+        }
+        /* Modal backdrop */
+        #overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0,0,0,0.6); /* semi-transparent black */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 9999;
+        }
+        /* Modal content */
+        #modal {
+          background: white;
+          padding: 2em;
+          border-radius: 10px;
+          text-align: center;
+          max-width: 600px;
+        }
+        /* button to close the consent form */
+        #close-button {
+          margin-top: 1em;
+          padding: 0.5em 1em;
+          cursor: pointer;
+        }
+
+        #header {
+          display: flex;
+          justify-content: flex-start;
+          margin-left: auto;
+          margin-right: auto;
+          text-align: center;
+          border: none;
+          border-bottom: 2px solid var(--text-color);
+        }
+
+        div {}
+        /* divs to organise elements in the main page */
+        .stack{
+            display: flex;
+            flex-direction: column;
+            gap: 1em; /* space between rows */
+            padding: 10px;
+        }
+        .row{
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+            padding: 10px;
+        }
+        .row2{
+            /* gap: 10px; */
+            padding: 5px;
+            align-items: left;
+            /* border: 1px solid black; */
+        }
+        .container {
+            display: flex;
+            justify-content: space-evenly; /* even spacing */
+            gap: 1em; /* optional spacing between columns */
+            padding: 20px;  
+            border: 1px solid black;
+        }
+        .column {
+            flex: 1; /* each column takes equal space */
+            /* display: flex; */
+            /* flex-direction: column; */
+            border: 1px solid black;
+            align-items: left; /* center content horizontally */
+            justify-content: left; /* center content vertically if height increases */
+            text-align: left;
+            padding: 10px;
+        }
+
+        audio {
+        }
+        h1 {
+            margin: 0;
+            padding: 30px;
+            /* border: 1px solid black; */
+            align-self: flex-start;
+            font-weight: normal;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="overlay">
+      <div id="modal">
+        <h2>Consentement à la participation à un projet de recherche</h2>
+        <p style="text-align: left;"> 
+        Les données recueillies à travers ce questionnaire web feront l'objet d'un 
+        projet de recherche scientifique, où la préférence des utilisateurs face à 
+        deux son de guitare modifiés est étudiée. 
+
+        Les données sur le mode d'écoute et la compétence musicale sont aussi 
+        sauvegardées pour l'étude. Il est préférable d'utiliser un casque d'écoute 
+        pour écouter les sons présentés. 
+
+        Aucune donnée permettant d'identifier les participants n'est sauvegardée. 
+        De plus, les données brutes seront combinées lors de l'analyse et seulement 
+        des statistiques globales seront communiquées. 
+
+        En cliquant sur le bouton "<b> j'accepte </b>", Je consens à ce que mes 
+        réponses soumises au présent site web soient utilisées dans un projet de 
+        recherche scientifique. Vous pouvez à tout moment quitter le site et seul 
+        les choix pour lesquels le formulaire a été soumis seront sauvegardés.
+        </p>
+
+        <button id="close-button">J'accepte</button>
+      </div>
+    </div>
+
+
+    <div id="header">
+      <a href="https://bruand.com/">
+      <img src="https://bruand.com/cdn/shop/files/Bruand_logo_9b9e5c1c-22c0-4887-b0fa-89eaa4fa608b_410x.png?v=1613503579"
+           alt="Logo Bruand"
+           style="display: block;
+                  width: 40%;">
+      </a>
+      <h1> Étude Psychoacoustique </h1>
+    </div>
+
+    <div class="stack" id="userInfoForm">
+    </div>
+
+    <div class="stack">
+
+      <p> 
+        <b> Évaluation des instruments </b> 
+        <br>
+        Quel instrument préférez vous?
+      </p>
+      <div class="row" id="messageContainer">
+      </div>
+
+      <div class="row">
+        <label for="SonA">  Instrument A </label><br>
+        <div id="SoundAContainer">
+        </div>
+        <p> Choix :</p>
+        <input type="radio" id="SonA" name="sound-choice" value="A">
+      </div>
+
+      <div class="row">
+        <label for="SonB">  Instrument B </label><br>
+        <div id="SoundBContainer">
+        </div>
+        <p> Choix :</p>
+        <input type="radio" id="SonB" name="sound-choice" value="B">
+      </div>
+
+      <div class="row">
+        <button id="choice-save">Enregistrer le choix et générer de nouveaux sons</button>
+        <button id="choice-del">Supprimer mes réponses et quitter la session</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
