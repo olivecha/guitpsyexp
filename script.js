@@ -1,5 +1,5 @@
 // Replace with your actual Power Automate flow HTTP POST URL
-const flowUrl = "https://default253209e9773140eb96e16444a68232.37.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/86d1df9c3eca4334a84938011fd6b6d1/triggers/manual/paths/invoke?api-version=1";
+const flowUrl = "https://default253209e9773140eb96e16444a68232.37.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/86d1df9c3eca4334a84938011fd6b6d1/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=je6rIwsvs-vZKlI7-smOirfcw9tSFyWqRW26DhmgbsA";
 
 // Dummy data to test the workflow
 const testData = {
