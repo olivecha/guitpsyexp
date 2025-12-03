@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -78,7 +79,7 @@
             display: flex;
             justify-content: space-evenly; /* even spacing */
             gap: 1em; /* optional spacing between columns */
-            padding: 20px;  
+            padding: 20px;
             border: 1px solid black;
         }
         .column {
@@ -101,6 +102,16 @@
             align-self: flex-start;
             font-weight: normal;
         }
+        button {
+        /* background-color: #4CAF50;  green background */
+        /* color: white;              /* white text */
+        padding: 15px 30px;        /* bigger button size */
+        font-size: 18px;           /* larger text */
+        /* border: none;              /* remove default border */
+        border-radius: 8px;        /* rounded corners */
+        cursor: pointer;           /* hand cursor on hover */
+        transition: background 0.3s ease; /* smooth hover effect */
+        }
     </style>
 
 </head>
@@ -108,29 +119,28 @@
     <div id="overlay">
       <div id="modal">
         <h2>Consentement à la participation à un projet de recherche</h2>
-        <p style="text-align: left;"> 
-        Les données recueillies à travers ce questionnaire web feront l'objet d'un 
-        projet de recherche scientifique, où la préférence des utilisateurs face à 
-        deux son de guitare modifiés est étudiée. 
+        <p style="text-align: left;">
+        Les données recueillies à travers ce questionnaire web feront l'objet d'un
+        projet de recherche scientifique, où la préférence des utilisateurs face à
+        deux son de guitare modifiés est étudiée.
 
-        Les données sur le mode d'écoute et la compétence musicale sont aussi 
-        sauvegardées pour l'étude. Il est préférable d'utiliser un casque d'écoute 
-        pour écouter les sons présentés. 
+        Les données sur le mode d'écoute et la compétence musicale sont aussi
+        sauvegardées pour l'étude. Il est préférable d'utiliser un casque d'écoute
+        pour écouter les sons présentés.
 
-        Aucune donnée permettant d'identifier les participants n'est sauvegardée. 
-        De plus, les données brutes seront combinées lors de l'analyse et seulement 
-        des statistiques globales seront communiquées. 
+        Aucune donnée permettant d'identifier les participants n'est sauvegardée.
+        De plus, les données brutes seront combinées lors de l'analyse et seulement
+        des statistiques globales seront communiquées.
 
-        En cliquant sur le bouton "<b> j'accepte </b>", Je consens à ce que mes 
-        réponses soumises au présent site web soient utilisées dans un projet de 
-        recherche scientifique. Vous pouvez à tout moment quitter le site et seul 
+        En cliquant sur le bouton "<b> j'accepte </b>", Je consens à ce que mes
+        réponses soumises au présent site web soient utilisées dans un projet de
+        recherche scientifique. Vous pouvez à tout moment quitter le site et seul
         les choix pour lesquels le formulaire a été soumis seront sauvegardés.
         </p>
 
         <button id="close-button">J'accepte</button>
       </div>
     </div>
-
 
     <div id="header">
       <a href="https://bruand.com/">
@@ -147,16 +157,18 @@
 
     <div class="stack">
 
-      <p> 
-        <b> Évaluation des instruments </b> 
+      <p>
+        <b> Évaluation des instruments </b>
         <br>
-        Quel instrument préférez vous?
+        Quelle sonorité de guitare préférez-vous?
+        <br>
+        (ajustez le volume de votre appareil pour une écoute confortable)
       </p>
       <div class="row" id="messageContainer">
       </div>
 
       <div class="row">
-        <label for="SonA">  Instrument A </label><br>
+        <label for="SonA" id="soundALabel">  Instrument A </label><br>
         <div id="SoundAContainer">
         </div>
         <p> Choix :</p>
@@ -164,19 +176,27 @@
       </div>
 
       <div class="row">
-        <label for="SonB">  Instrument B </label><br>
+        <label for="SonB" id="soundBLabel">  Instrument B </label><br>
         <div id="SoundBContainer">
         </div>
         <p> Choix :</p>
         <input type="radio" id="SonB" name="sound-choice" value="B">
       </div>
 
+      <div class="row" id="soundLoadMessage">
+      </div>
+
       <div class="row">
+        <button id="end-session"> Terminer la session </button>
         <button id="choice-save">Enregistrer le choix et générer de nouveaux sons</button>
-        <button id="choice-del">Supprimer mes réponses et quitter la session</button>
+      </div>
+      <div class="row">
+        <button id="choice-del">Supprimer mes réponses et terminer la session</button>
       </div>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
+
+
