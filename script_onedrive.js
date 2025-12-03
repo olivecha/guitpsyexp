@@ -345,9 +345,8 @@ if (typeof userListenMode === "undefined") userListenMode = "-1";
 if (typeof choiceCounter === "undefined") choiceCounter = 0;
 
 if (typeof userId === "undefined") {
-    fetch('https://api.ipify.org?format=json')
-        .then(res => res.json())
-        .then(data => { userId = data.ip.replace(/\./g, ""); });
+// Generate a random 12-digit number as anonymized user ID
+userId = Math.floor(100000000000 + Math.random() * 900000000000).toString();
 }
 
 loadRandomAudio(button, true);
