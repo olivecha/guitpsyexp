@@ -151,7 +151,7 @@ let fractionPlayedTimeA = 0.0;
 let fractionPlayedTimeB = 0.0;
 let UserInfoChoiceVisible = false;
 
-const powerAutomateUrl = "YOUR_POWER_AUTOMATE_HTTP_URL"; // replace with your Power Automate HTTP trigger URL
+const powerAutomateUrl = "https://default253209e9773140eb96e16444a68232.37.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/86d1df9c3eca4334a84938011fd6b6d1/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=je6rIwsvs-vZKlI7-smOirfcw9tSFyWqRW26DhmgbsA";
 
 function sendDataToPowerAutomate(userId, userMusicLevel, userListenMode,
                                  soundInfoA, soundInfoB, fracA, fracB, soundChoice, deleted=false) {
