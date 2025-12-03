@@ -1,0 +1,50 @@
+<script>
+  // Replace with your actual Power Automate flow HTTP POST URL
+  const flowUrl = "https://default253209e9773140eb96e16444a68232.37.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/86d1df9c3eca4334a84938011fd6b6d1/triggers/manual/paths/invoke?api-version=1";
+
+  // Dummy data to test the workflow
+  const testData = {
+    timestamp: new Date().toISOString(),
+    userId: "123456789",
+    userMusicLevel: 3,
+    userListenMode: 1,
+    soundType: "melody",
+    decayFactorA: 0.75,
+    decayFactorB: 1.00,
+    attackFactorA: 0.10,
+    attackFactorB: 0.15,
+    playedFractionA: 0.85,
+    playedFractionB: 0.90,
+    soundChoice: "A",
+    deleted: false
+  };
+
+  // Function to send data to Power Automate
+  function sendDummyData() {
+    fetch(flowUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(testData)
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(data => {
+      console.log("Dummy data sent successfully!", data);
+      alert("Dummy data sent successfully! Check your Excel table.");
+    })
+    .catch(error => {
+      console.error("Error sending dummy data:", error);
+      alert("Error sending dummy data. Check console for details.");
+    });
+  }
+
+  // Automatically send dummy data when the page loads
+  window.addEventListener("load", sendDummyData);
+</script>
+
