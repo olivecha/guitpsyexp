@@ -153,23 +153,31 @@ let UserInfoChoiceVisible = false;
 
 const powerAutomateUrl = "https://default253209e9773140eb96e16444a68232.37.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/86d1df9c3eca4334a84938011fd6b6d1/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=je6rIwsvs-vZKlI7-smOirfcw9tSFyWqRW26DhmgbsA";
 
+function sanitize(value, fallback = null) {
+    if (value === undefined) return fallback;
+    if (typeof value === "number" && !Number.isFinite(value)) return fallback;
+    return value;
+}
+
 function sendDataToPowerAutomate(userId, userMusicLevel, userListenMode,
                                  soundInfoA, soundInfoB, fracA, fracB, soundChoice, deleted=false) {
     const payload = {
         timestamp: new Date().toISOString(),
-        userId: userId,
-        userMusicLevel: Number(userMusicLevel),
-        userListenMode: Number(userListenMode),
-        soundType: soundInfoA[0],
-        decayFactorA: soundInfoA[1],
-        decayFactorB: soundInfoB[1],
-        attackFactorA: soundInfoA[2],
-        attackFactorB: soundInfoB[2],
-        playedFractionA: fracA,
-        playedFractionB: fracB,
-        soundChoice: soundChoice,
-        deleted: deleted
+        userId: sanitize(userId),
+        userMusicLevel: sanitize(Number(userMusicLevel)),
+        userListenMode: sanitize(Number(userListenMode)),
+        soundType: sanitize(soundInfoA[0]),
+        decayFactorA: sanitize(soundInfoA[1]),
+        decayFactorB: sanitize(soundInfoB[1]),
+        attackFactorA: sanitize(soundInfoA[2]),
+        attackFactorB: sanitize(soundInfoB[2]),
+        playedFractionA: sanitize(fracA),
+        playedFractionB: sanitize(fracB),
+        soundChoice: sanitize(soundChoice),
+        deleted: !!deleted
     };
+
+    console.log("Payload being sent:", JSON.stringify(payload));
 
     fetch(powerAutomateUrl, {
         method: "POST",
