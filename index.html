@@ -35,7 +35,9 @@
           padding: 2em;
           border-radius: 10px;
           text-align: center;
-          max-width: 600px;
+          max-width: 800px;
+          max-height: 80vh;      /* modal never exceeds viewport height */
+          overflow-y: auto;      /* scroll vertically if content is too tall */
         }
         /* button to close the consent form */
         #close-button {
@@ -118,29 +120,78 @@
 <body>
     <div id="overlay">
       <div id="modal">
-        <h2>Consentement à la participation à un projet de recherche</h2>
-        <p style="text-align: left;">
-        Les données recueillies à travers ce questionnaire web feront l'objet d'un
-        projet de recherche scientifique, où la préférence des utilisateurs face à
-        deux son de guitare modifiés est étudiée.
+          <h3> 
+              Formulaire de consentement pour la participation à une étude psychoacoustique 
+              sur la perception des sons de guitare 
+          </h3>
 
-        Les données sur le mode d'écoute et la compétence musicale sont aussi
-        sauvegardées pour l'étude. Il est préférable d'utiliser un casque d'écoute
-        pour écouter les sons présentés.
+            <p style="text-align: left;">
+            Les objectifs du présent projet de recherche sont de mesurer la qualité
+            perçue d'une guitare en fonction du son produit par celle-ci et de
+            mesurer les seuils minimaux de perception de certains attributs du son
+            produit. 
+            <br>
+            <br>
+            En tant que participant, il vous est attendu de répondre au
+            questionnaire préliminaire anonyme sur votre compétence musicale et la
+            méthode d'écoute utilisée. Ensuite, votre participation à l'étude
+            consistera à écouter les sons présentés et choisir le son que vous
+            associez à un instrument de meilleure qualité. Vous pouvez évaluer
+            autant de sons que vous le souhaitez, mais un minimum de cinq est
+            attendu (le nombre de sons évalué sera indiqué).
+            <br>
+            <br>
+            Aucun avantage, bénéfice ou compensation ne vous sera octroyé pour
+            votre participation.
+            <br>
+            <br>
+            La participation au projet ne comporte aucun risque ou inconvénient
+            pour les participants.
+            <br>
+            <br>
+            Aucune donnée permettant votre identification n'est sauvegardée. Les
+            réponses au questionnaire et aux choix de sons sont sauvegardées
+            dans un fichier sur un serveur <i>OneDrive</i> académique hébergé
+            au Canada. 
+            <br>
+            <br>
+            À la fin de la période de collecte de données, les données seront
+            téléchargées sur un poste de travail afin d'en faire l'analyse pour la
+            rédaction d'une publication scientifique. Les données seront ensuite
+            supprimées du serveur <i>OneDrive</i> et entreposées sur un disque
+            dur dans les bureaux du directeur de l'École de Lutherie Bruand. les
+            résultats de recherche vous seront partagés par le même canal ayant
+            servi à votre recrutement.
+            <br>
+            <br>
+            Vous pouvez mettre fin à votre participation à tout moment en quittant
+            la page web. Les réponses pour lesquelles le formulaire a été
+            enregistré seront sauvegardées.
+            <br>
+            <br>
+            En cliquant sur le bouton <b> Je consens </b>, vous consentez en
+            tant que participant au modalités décrites ci-haut et à ce que vos
+            réponses au questionnaire soient utilisées dans le cadre d'un projet de
+            recherche.
+            </p>
+            <button id="close-button">Je consens</button>
+            <p style="text-align: left;">
+            Le chercheur principal, Louis Brillon, s'engage à respecter les
+            modalités du projet de recherche convenues avec le Comité d’éthique de
+            la recherche Cégep du Vieux Montréal. 
+            <br>
+            <br>
+            Les chercheurs déclarent qu'ils n'ont aucun conflit d'intérêt connu qui
+            pourrait influencer le travail de recherche dans le cadre du présent
+            projet.
+            <br>
+            <br>
+            Le lien suivant peut être utilisé pour contacter les chercheurs
+            responsables afin de demander des renseignement ou formuler une
+            plainte (<a href="mailto:louisbrillon@hotmail.com">Envoyer un
+                email</a>).
 
-        Aucune donnée permettant d'identifier les participants n'est sauvegardée.
-        De plus, les données brutes seront combinées lors de l'analyse et seulement
-        des statistiques globales seront communiquées.
-
-        En cliquant sur le bouton "<b> Je consent </b>", Je consens à ce que mes
-        réponses soient utilisées pour fin de publications dans le contexte d'une 
-        étude psycho acoustique. Aucune information de nature personnelle ni électronique 
-        ne sera enregistré et vos réponses seront maintenues dans un serveur sécurisé. 
-        Vous pouvez à tout moment quitter le site et seul les choix pour lesquels le formulaire 
-        a été soumis seront sauvegardés.
-        </p>
-
-        <button id="close-button">Je consent</button>
+            </p>
       </div>
     </div>
 
