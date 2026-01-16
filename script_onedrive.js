@@ -178,6 +178,7 @@ function sendDataToPowerAutomate(userId, userMusicLevel, userListenMode,
     };
 
     console.log("Payload being sent:", JSON.stringify(payload));
+    await new Promise(r => setTimeout(r, 500));
 
     fetch(powerAutomateUrl, {
         method: "POST",
