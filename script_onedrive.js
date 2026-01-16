@@ -159,18 +159,64 @@ function sanitize(value, fallback = null) {
     return value;
 }
 
-function sendDataToPowerAutomate(userId, userMusicLevel, userListenMode,
-                                 soundInfoA, soundInfoB, fracA, fracB, soundChoice, deleted=false) {
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+
+let powerAutomateQueue = Promise.resolve();
+
+async function sendDataToPowerAutomate(
+    userId,
+    userMusicLevel,
+    userListenMode,
+    soundInfoA,
+    soundInfoB,
+    fracA,
+    fracB,
+    soundChoice,
+    deleted = false
+) {
+    // Queue requests so they NEVER overlap
+    powerAutomateQueue = powerAutomateQueue.then(() =>
+        sendDataInternal(
+            userId,
+            userMusicLevel,
+            userListenMode,
+            soundInfoA,
+            soundInfoB,
+            fracA,
+            fracB,
+            soundChoice,
+            deleted
+        )
+    );
+
+    return powerAutomateQueue;
+}
+
+async function sendDataInternal(
+    userId,
+    userMusicLevel,
+    userListenMode,
+    soundInfoA,
+    soundInfoB,
+    fracA,
+    fracB,
+    soundChoice,
+    deleted
+) {
     const payload = {
         timestamp: new Date().toISOString(),
         userId: sanitize(userId),
         userMusicLevel: sanitize(Number(userMusicLevel)),
         userListenMode: sanitize(Number(userListenMode)),
-        soundType: sanitize(soundInfoA[0]),
-        decayFactorA: sanitize(soundInfoA[1]),
-        decayFactorB: sanitize(soundInfoB[1]),
-        attackFactorA: sanitize(soundInfoA[2]),
-        attackFactorB: sanitize(soundInfoB[2]),
+        soundType: sanitize(soundInfoA?.[0]),
+        decayFactorA: sanitize(soundInfoA?.[1]),
+        decayFactorB: sanitize(soundInfoB?.[1]),
+        attackFactorA: sanitize(soundInfoA?.[2]),
+        attackFactorB: sanitize(soundInfoB?.[2]),
         playedFractionA: sanitize(fracA),
         playedFractionB: sanitize(fracB),
         soundChoice: sanitize(soundChoice),
@@ -178,19 +224,39 @@ function sendDataToPowerAutomate(userId, userMusicLevel, userListenMode,
     };
 
     console.log("Payload being sent:", JSON.stringify(payload));
-    await new Promise(r => setTimeout(r, 500));
 
-    fetch(powerAutomateUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-    })
-    .then(response => {
-        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-        console.log("Data successfully sent to Power Automate:", payload);
-    })
-    .catch(error => console.error("Error sending data:", error));
+    // Small delay to reduce Excel / connector contention
+    await delay(400);
+
+    await postWithRetry(payload, 2);
+
+    console.log("Data successfully sent to Power Automate:", payload);
 }
+
+async function postWithRetry(payload, retries) {
+    try {
+        const response = await fetch(powerAutomateUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+            const text = await response.text();
+            throw new Error(`HTTP ${response.status}: ${text}`);
+        }
+    } catch (err) {
+        if (retries > 0) {
+            console.warn("Retrying Power Automate POST...", err.message);
+            await delay(700);
+            return postWithRetry(payload, retries - 1);
+        }
+        console.error("Final failure sending data:", err);
+        throw err;
+    }
+}
+
+
 
 function soundParamFromFile(file) {
     let baseName = file.split('/').pop().split('.')[0];
