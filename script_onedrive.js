@@ -132,7 +132,7 @@ const containerB = document.getElementById("SoundBContainer");
 const containerMessage = document.getElementById("messageContainer");
 const containerSoundLoadInfo = document.getElementById("soundLoadMessage");
 const button = document.getElementById("choice-save");
-const delButton = document.getElementById("choice-del");
+//const delButton = document.getElementById("choice-del");
 const endSessionButton = document.getElementById("end-session");
 const soundALabel = document.getElementById("soundALabel");
 const soundBLabel = document.getElementById("soundBLabel");
@@ -360,7 +360,7 @@ userId = Math.floor(100000000000 + Math.random() * 900000000000).toString();
 loadRandomAudio(button, true);
 
 button.addEventListener("click", loadRandomAudio);
-delButton.addEventListener("click", removeUserChoices);
+//delButton.addEventListener("click", removeUserChoices);
 endSessionButton.addEventListener("click", endSession);
 buttonUserInfo.addEventListener("click", saveUserInfoAndHideQuestions);
 buttonUserInfoRestart.addEventListener("click", restoreUserInfoForm);
