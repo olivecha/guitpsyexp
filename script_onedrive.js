@@ -1,9 +1,13 @@
 window.addEventListener("load", function() {
 const overlay = document.getElementById("overlay");
 const closeButton = document.getElementById("close-button");
+const exitButton = document.getElementById("exit-button");
 
 closeButton.addEventListener("click", function() {
     overlay.style.display = "none";
+});
+exitButton.addEventListener("click", function() {
+    document.body.innerHTML = "<p> Merci de votre intérêt pour le projet, vous pouvez maintenant quitter la page.</p>";
 });
 
 

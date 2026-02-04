@@ -45,6 +45,11 @@
           padding: 0.5em 1em;
           cursor: pointer;
         }
+        #exit-button {
+          margin-top: 1em;
+          padding: 0.5em 1em;
+          cursor: pointer;
+        }
 
         #header {
           display: flex;
@@ -114,6 +119,11 @@
         cursor: pointer;           /* hand cursor on hover */
         transition: background 0.3s ease; /* smooth hover effect */
         }
+        .right-list {
+        margin-left: auto;
+        width: fit-content; /* or a fixed width */
+        text-align: left;
+        }
     </style>
 
 </head>
@@ -121,76 +131,149 @@
     <div id="overlay">
       <div id="modal">
           <h3> 
-              Formulaire de consentement pour la participation à une étude psychoacoustique 
-              sur la perception des sons de guitare 
+              Formulaire d'information et de consentement pour la participation à un projet de recherche 
           </h3>
-
             <p style="text-align: left;">
-            Les objectifs du présent projet de recherche sont de mesurer la qualité
+            <b> Titre du projet de recherche:</b> Étude psychoacoustique de
+            l’effet de la réponse temporelle d’une guitare sur la qualité
+            d’instrument perçue 
+            <br>
+            <br>
+            <b> Objectifs de la recherche: </b>
+            Les objectifs du présent projet de recherche
+            sont de mesurer la qualité
             perçue d'une guitare en fonction du son produit par celle-ci et de
             mesurer les seuils minimaux de perception de certains attributs du son
             produit. 
             <br>
             <br>
+            <b> Nature et durée de votre participation:</b>
             En tant que participant, il vous est attendu de répondre au
             questionnaire préliminaire anonyme sur votre compétence musicale et la
             méthode d'écoute utilisée. Ensuite, votre participation à l'étude
             consistera à écouter les sons présentés et choisir le son que vous
             associez à un instrument de meilleure qualité. Vous pouvez évaluer
             autant de sons que vous le souhaitez, mais un minimum de cinq est
-            attendu (le nombre de sons évalué sera indiqué).
+            attendu (le nombre de sons évalué sera indiqué). La durée des sons
+            étant d'environ 5 secondes, votre participation devrait nécessiter
+            moins de 5 minutes.  
             <br>
             <br>
-            Aucun avantage, bénéfice ou compensation ne vous sera octroyé pour
-            votre participation.
-            <br>
-            <br>
-            La participation au projet ne comporte aucun risque ou inconvénient
-            pour les participants.
-            <br>
-            <br>
+            <b> Mesures pour assurer l’anonymat des participant(e)s et la confidentialité des données:</b>
             Aucune donnée permettant votre identification n'est sauvegardée. Les
             réponses au questionnaire et aux choix de sons sont sauvegardées
             dans un fichier sur un serveur <i>OneDrive</i> académique hébergé
             au Canada. 
             <br>
             <br>
-            À la fin de la période de collecte de données, les données seront
-            téléchargées sur un poste de travail afin d'en faire l'analyse pour la
-            rédaction d'une publication scientifique. Les données seront ensuite
-            supprimées du serveur <i>OneDrive</i> et entreposées sur un disque
-            dur dans les bureaux du directeur de l'École de Lutherie Bruand. les
-            résultats de recherche vous seront partagés par le même canal ayant
-            servi à votre recrutement.
+            <b> Avantages liés à la participation:</b> Aucun avantage, bénéfice
+            ou compensation ne vous sera octroyé pour votre participation.
             <br>
             <br>
-            Vous pouvez mettre fin à votre participation à tout moment en quittant
-            la page web. Les réponses pour lesquelles le formulaire a été
-            enregistré seront sauvegardées.
+            <b> Risques liés à la participation:</b> La participation au projet
+            comporte un risque minimal pour les participants.
             <br>
             <br>
-            En cliquant sur le bouton <b> Je consens </b>, vous consentez en
-            tant que participant au modalités décrites ci-haut et à ce que vos
-            réponses au questionnaire soient utilisées dans le cadre d'un projet de
-            recherche.
+            <b> Droits des participant(e)s:</b>
             </p>
-            <button id="close-button">Je consens</button>
+            <ol class="right-list">
+            <li>Aucune compensation financière ou matérielle n’est offerte aux
+                participant(e)s.
+            </li> 
+            <li>La participation à ce projet est volontaire. Vous pouvez mettre
+                fin à votre participation à tout moment en quittant la page
+                web. Les réponses pour lesquelles le formulaire a été
+                enregistré seront sauvegardées. Comme le questionnaire est
+                anonyme, il ne vous sera pas possible de demander le retrait
+                des réponses fournies puisque nous ne pouvons pas faire le lien
+                entre vos réponses et votre identité.
+            </li> 
+            </ol>
             <p style="text-align: left;">
+            <b> Gestion des données de recherche:</b> À la fin de la période de
+            collecte de données, les données seront téléchargées sur un poste
+            de travail afin d'en faire l'analyse pour la rédaction d'une
+            publication scientifique. Les données seront ensuite supprimées du
+            serveur <i>OneDrive</i> et entreposées sur un disque dur dans les
+            bureaux du directeur de l'École de Lutherie Bruand. les résultats
+            de recherche vous seront partagés par le même canal ayant servi à
+            votre recrutement.
+            <br>
+            <br>
+            <b> Questions et plaintes:</b> 
+            <br>
+            <br>
+            Toute question concernant cette recherche peut être adressée aux
+            chercheur(e)s dont les coordonnées apparaissent au bas de cette
+            page. 
+            <br>
+            <br>
+            Ce projet de recherche a été évalué et approuvé par un Comité
+            d’éthique de la recherche du cégep du Vieux Montréal. Toute plainte
+            relative à votre participation à cette recherche peut y être
+            adressée.
+            <br>
+            <br>
+            Pour toute question concernant vos droits en tant que participant à
+            ce projet de recherche ou si vous avez des plaintes à formuler,
+            vous pouvez communiquer avec la Direction adjointe des études aux
+            programmes et à la recherche:<br>
+            <a href="mailto:nsavard@cvm.qc.ca">
+                Envoyer un courriel</a><br> Téléphone: (514) 983-3437, poste 2262.
+            <br>
+            <br>
+            <b> Remerciements:</b> Votre collaboration est essentielle à la
+            réalisation de notre projet et l’équipe de recherche tient à vous
+            en remercier. 
+            <br>
+            <br>
+            <b> Consentement: </b>
+            J’ai lu et compris la présente page qui expose les conditions,
+            les risques et les avantages de ma participation à la recherche
+            intitulée : «Étude psychoacoustique de
+            l’effet de la réponse temporelle d’une guitare sur la qualité
+            d’instrument perçue». Le cas échéant, j’ai obtenu des réponses
+            satisfaisantes aux questions posées au sujet de cette recherche.
+            J’accepte librement de participer. Je peux également refuser de
+            répondre à certaines questions. Mon refus de participer ou de
+            répondre à certaines questions n’aura aucune incidence.
+            </p>
+
+            <div class="row2">
+            <button id="close-button">J’accepte de participer à la recherche</button>
+            <button id="exit-button">Je refuse de participer à la recherche</button>
+            </div>
+
+            <p style="text-align: left;">
+            <b> Déclaration des chercheurs:</b><br>
             Le chercheur principal, Louis Brillon, s'engage à respecter les
             modalités du projet de recherche convenues avec le Comité d’éthique de
             la recherche Cégep du Vieux Montréal. 
-            <br>
             <br>
             Les chercheurs déclarent qu'ils n'ont aucun conflit d'intérêt connu qui
             pourrait influencer le travail de recherche dans le cadre du présent
             projet.
             <br>
             <br>
-            Le lien suivant peut être utilisé pour contacter les chercheurs
-            responsables afin de demander des renseignement ou formuler une
-            plainte (<a href="mailto:louisbrillon@hotmail.com">Envoyer un
-                email</a>).
-
+            <b> Coordonnées des chercheurs:</b>
+            <br>
+            <br>
+            <b> Chercheur principal </b>
+            <br>
+            Louis Brillon<br>
+            <a href="mailto:louisbrillon@hotmail.com">Envoyer un
+                courriel</a><br>
+            École-atelier Lutherie-Guitare Bruand<br>
+            945 Ch. de Chambly, Longueuil, QC J4H 4A9<br>
+            (450) 679-2630 poste 2665 <br>
+            <br>
+            <b> Co-chercheur </b><br>
+            Olivier Chabot<br>
+            <a href="mailto:olivier.chabot@etud.polymtl.ca">Envoyer un
+                courriel</a><br>
+            École-atelier Lutherie-Guitare Bruand<br>
+            945 Ch. de Chambly, Longueuil, QC J4H 4A9<br>
+            (450) 679-2630 poste 2665 <br>
             </p>
       </div>
     </div>
