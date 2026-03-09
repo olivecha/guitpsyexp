@@ -156,6 +156,7 @@ let fractionPlayedTimeB = 0.0;
 let UserInfoChoiceVisible = false;
 
 const powerAutomateUrl = "https://default253209e9773140eb96e16444a68232.37.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/86d1df9c3eca4334a84938011fd6b6d1/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=je6rIwsvs-vZKlI7-smOirfcw9tSFyWqRW26DhmgbsA";
+const powerAutomateUrlBruant = "https://default92a7730074664fef89c3269c03d87d.b8.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/07ee26ea0f524bd28fd1afb628f7ae2c/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=kySYL9mIoj1wWv9Dej2_nysmmofIhDzaEiGiWCuAPbk";
 
 function sanitize(value, fallback = null) {
     if (value === undefined) return fallback;
@@ -233,8 +234,11 @@ async function sendDataInternal(
     await delay(400);
 
     await postWithRetry(payload, 2);
+    console.log("Data successfully sent to Power Automate (Poly):", payload);
 
-    console.log("Data successfully sent to Power Automate:", payload);
+    await postWithRetryBruant(payload, 2);
+    console.log("Data successfully sent to Power Automate (Bruant):", payload);
+
 }
 
 async function postWithRetry(payload, retries) {
@@ -260,6 +264,28 @@ async function postWithRetry(payload, retries) {
     }
 }
 
+async function postWithRetryBruant(payload, retries) {
+    try {
+        const response = await fetch(powerAutomateUrlBruant, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+            const text = await response.text();
+            throw new Error(`HTTP ${response.status}: ${text}`);
+        }
+    } catch (err) {
+        if (retries > 0) {
+            console.warn("Retrying Power Automate POST...", err.message);
+            await delay(700);
+            return postWithRetryBruant(payload, retries - 1);
+        }
+        console.error("Final failure sending data:", err);
+        throw err;
+    }
+}
 
 
 function soundParamFromFile(file) {
